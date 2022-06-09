@@ -54,9 +54,9 @@ with app_des:
 
 st.sidebar.header('Parámetros de Entrada Usario')
 
-st.sidebar.markdown("""
-[Example CSV input file](https://raw.githubusercontent.com/dataprofessor/data/master/penguins_example.csv)
-""")
+# st.sidebar.markdown("""
+# [Example CSV input file](penguins_example.csv)
+# """)
 
 # Collects user input features into dataframe
 uploaded_file = st.sidebar.file_uploader("Cargue sus parámetros desde un archivo CSV", type=["csv"])
