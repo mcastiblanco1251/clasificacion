@@ -17,7 +17,7 @@ row1_1, row1_2 = st.columns((2, 3))
 with row1_1:
     image = Image.open('p1.jpg')
     st.image(image, use_column_width=True)
-    # st.markdown('Web App by [Manuel Castiblanco](https://github.com/mcastiblanco1251)')
+    st.markdown('Web App by [Manuel Castiblanco](https://github.com/mcastiblanco1251)')
 with row1_2:
     st.write("""
     # Clasificación App
@@ -131,3 +131,6 @@ with row1_1:
 with row1_2:
     st.subheader('Prediction Probability')
     st.write(prediction_proba)
+
+with st.expander("Contáctanos👉"):
+    st.subheader('Quieres conocer mas de IA, ML o DL 👉[contactanos!!](http://ia.smartecorganic.com.co/index.php/contact/)')
