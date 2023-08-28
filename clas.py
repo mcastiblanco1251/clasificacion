@@ -79,7 +79,7 @@ else:
         features = pd.DataFrame(data, index=[0])
         return features
     input_df = user_input_features()
-
+st.write(input_df)
 # Combines user input features with entire penguins dataset
 # This will be useful for the encoding phase
 penguins_raw = pd.read_csv('penguins_cleaned.csv')
@@ -88,13 +88,17 @@ df = pd.concat([input_df,penguins],axis=0)
 
 # Encoding of ordinal features
 # https://www.kaggle.com/pratik1120/penguin-dataset-eda-classification-and-clustering
-encode = ['sexo','Isla']
-for col in encode:
-    dummy = pd.get_dummies(df[col], prefix=col)
-    df = pd.concat([df,dummy], axis=1)
-    del df[col]
-df = df[:1] # Selects only the first row (the user input data)
+def ene():
+    encode = ['sexo','Isla']
+    for col in encode:
+        dummy = pd.get_dummies(df[col], prefix=col)
+        df = pd.concat([df,dummy], axis=1)
+        del df[col]
+        df = df[:1] # Selects only the first row (the user input data)
+    return dummy,df
 
+dummy, df = ene()
+st.write(dummy)
 # Displays the user input features
 st.subheader('Parámetros de Entrada')
 
@@ -102,7 +106,7 @@ if uploaded_file is not None:
     st.write(df)
 else:
     st.write('A la espera de que se cargue el archivo CSV. Actualmente usando parámetros de entrada de ejemplo (que se muestran a continuación).')
-    st.write(df)
+    st.dataframe(df)
 
 # Reads in saved classification model
 load_clf = pickle.load(open('penguins_clf.pkl', 'rb'))
