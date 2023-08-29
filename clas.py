@@ -88,17 +88,13 @@ df = pd.concat([input_df,penguins],axis=0)
 
 # Encoding of ordinal features
 # https://www.kaggle.com/pratik1120/penguin-dataset-eda-classification-and-clustering
-def ene():
-    encode = ['sexo','Isla']
-    for col in encode:
-        dummy = pd.get_dummies(df[col], prefix=col)
-        df = pd.concat([df,dummy], axis=1)
-        del df[col]
-        df = df[:1] # Selects only the first row (the user input data)
-    return dummy,df
+encode = ['sexo','Isla']
+for col in encode:
+    dummy = pd.get_dummies(df[col], prefix=col)
+    df = pd.concat([df,dummy], axis=1)
+    del df[col]
+df = df[:1] # Selects only the first row (the user input data)
 
-dummy, df = ene()
-st.write(dummy)
 # Displays the user input features
 st.subheader('Parámetros de Entrada')
 
