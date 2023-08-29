@@ -94,7 +94,7 @@ for col in encode:
     df = pd.concat([df,dummy], axis=1)
     del df[col]
 df = df[:1] # Selects only the first row (the user input data)
-
+st.write(dummy)
 # Displays the user input features
 st.subheader('Parámetros de Entrada')
 
