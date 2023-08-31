@@ -79,7 +79,7 @@ else:
         features = pd.DataFrame(data, index=[0])
         return features
     input_df = user_input_features()
-st.write(input_df)
+#st.write(input_df)
 # Combines user input features with entire penguins dataset
 # This will be useful for the encoding phase
 penguins_raw = pd.read_csv('penguins_cleaned.csv')
@@ -89,36 +89,37 @@ df = pd.concat([input_df,penguins],axis=0)
 df=df[:1]
 
 
-st.write(df)
-# Encoding of ordinal features
-# https://www.kaggle.com/pratik1120/penguin-dataset-eda-classification-and-clustering
-# encode = ['sexo','Isla']
-# for col in encode:
-#     dummy = pd.get_dummies(df[col], prefix=col)
-#     df = pd.concat([df,dummy], axis=1)
-#     del df[col]
-# df = df[:1] # Selects only the first row (the user input data)
-if list(df.sexo)[0]=='Macho':
-    df['sexo_Hembra']=0
-    df['sexo_Macho']=1
-if list(df.sexo)[0]=='Hembra':
-    df['sexo_Hembra']=1
-    df['sexo_Macho']=0
-if list(df.Isla)[0]=='Biscoe':
-    df['isla_Biscoe']=1
-    df['isla_Dream']=0
-    df['isla_Torgersen']=0
-if list(df.Isla)[0]=='Dream':
-    df['isla_Biscoe']=0
-    df['isla_Dream_']=1
-    df['isla_Torgersen']=0
-if list(df.Isla)[0]=='Torgersen':
-    df['isla_Biscoe']=0
-    df['isla_Dream_']=1
-    df['isla_Torgersen']=0
-df=df[:1]
-df = df.drop(columns=['Isla', 'sexo'], axis=1)
-st.write(df)
+
+#Encoding of ordinal features
+#https://www.kaggle.com/pratik1120/penguin-dataset-eda-classification-and-clustering
+encode = ['sexo','Isla']
+for col in encode:
+    dummy = pd.get_dummies(df[col], prefix=col)
+    df = pd.concat([df,dummy], axis=1)
+    del df[col]
+df = df[:1]
+#st.write(df) # Selects only the first row (the user input data)
+# if list(df.sexo)[0]=='Macho':
+#     df['sexo_Hembra']=0
+#     df['sexo_Macho']=1
+# if list(df.sexo)[0]=='Hembra':
+#     df['sexo_Hembra']=1
+#     df['sexo_Macho']=0
+# if list(df.Isla)[0]=='Biscoe':
+#     df['isla_Biscoe']=1
+#     df['isla_Dream']=0
+#     df['isla_Torgersen']=0
+# if list(df.Isla)[0]=='Dream':
+#     df['isla_Biscoe']=0
+#     df['isla_Dream_']=1
+#     df['isla_Torgersen']=0
+# if list(df.Isla)[0]=='Torgersen':
+#     df['isla_Biscoe']=0
+#     df['isla_Dream_']=1
+#     df['isla_Torgersen']=0
+# df=df[:1]
+# df = df.drop(columns=['Isla', 'sexo'], axis=1)
+# st.write(df)
 
 # Displays the user input features
 st.subheader('Parámetros de Entrada')
