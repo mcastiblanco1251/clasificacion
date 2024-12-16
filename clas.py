@@ -143,15 +143,15 @@ with row1_1:
     penguins_species = np.array(['Adelie','Chinstrap','Gentoo'])
     if prediction==0:
         image = Image.open('a.png')
-        st.image(image, use_column_width=True)
+        st.image(image, use_container_width=True)
         st.write(str(penguins_species[prediction]))
     elif prediction==2:
         image = Image.open('g.png')
-        st.image(image, use_column_width=True)
+        st.image(image, use_container_width=True)
         st.write(str(penguins_species[prediction]))
     else:
         image = Image.open('c.png')
-        st.image(image, use_column_width=True)
+        st.image(image, use_container_width=True)
         st.write(str(penguins_species[prediction]))
     #st.markdown('Web App by [Manuel Castiblanco](https://github.com/mcastiblanco1251)')
 with row1_2:
